@@ -1,6 +1,6 @@
 const { get: axiosGet, post: axiosPost } = require('axios');
 
-// Get the auth token
+// Get the auth token @params user, password
 exports.getAuthToken = (user, pass) => (req, res) => {
   const authData = { username: user, password: pass };
 
@@ -14,6 +14,7 @@ exports.stornApiTest = (req, res) => {
     .then(apiRes => res.send(apiRes.data));
 };
 
+// Gets all tasks from api @param auth
 exports.getAllTasks = auth => (req, res) => {
   const headers = { Authorization: auth };
 
@@ -21,6 +22,7 @@ exports.getAllTasks = auth => (req, res) => {
     .then(apiRes => res.send(apiRes.data));
 };
 
+// Add a task to api @param auth
 exports.addTask = auth => (req, res) => {
   const headers = { Authorization: auth };
   const { body: taskData } = req;
