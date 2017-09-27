@@ -14,10 +14,18 @@ exports.stornApiTest = (req, res) => {
     .then(apiRes => res.send(apiRes.data));
 };
 
-
-exports.getTasks = (req, res) => {
-  const headers = { Authorization: 'Token 3dd8adc849887da3631747c462a5bba4a21eb75f' };
+exports.getAllTasks = auth => (req, res) => {
+  const headers = { Authorization: auth };
 
   axiosGet('https://api.storn.co/api/v1/task/', { headers })
+    .then(apiRes => res.send(apiRes.data));
+};
+
+exports.addTask = auth => (req, res) => {
+  const headers = { Authorization: auth };
+  const { body: taskData } = req;
+  const reqData = { headers, data: taskData };
+
+  axiosPost('https://api.storn.co/api/v1/task/', reqData)
     .then(apiRes => res.send(apiRes.data));
 };
