@@ -13,7 +13,7 @@ const app = express();
 const { PORT = 8080, USERNAME, PASSWORD, AUTH_TYPE, AUTH_TOKEN } = process.env;
 
 // Serve static assets
-app.use(express.static(resolve(__dirname, '../app')));
+app.use(express.static(resolve(__dirname, '../dist')));
 
 // Auth request to get token
 app.use('/auth', getAuthToken(USERNAME, PASSWORD));
