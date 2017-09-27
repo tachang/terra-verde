@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const srcPath = resolve(__dirname, './app/entry.jsx');
 const publicPath = resolve(__dirname, 'dist/');
@@ -15,19 +16,25 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/ }
+      { test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.(png|svg|jpg|gif)$/, use: 'file-loader' },
+      { test: /\.(woff|woff2|eot|ttf|otf)$/, use: 'file-loader' }
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './template.html'
+    })
+  ],
   devServer: {
   // host: '0.0.0.0',
     port: 5000,
     contentBase: publicPath,
-    proxy: [
-      {
-        context: ['/api'],
-        target: 'http://localhost:8080',
-        secure: false
-      }
-    ]
+    proxy: [{
+      context: ['/api'],
+      target: 'http://localhost:8080',
+      secure: false
+    }]
   },
 };
