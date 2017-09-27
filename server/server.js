@@ -10,7 +10,7 @@ const {
 if (process.env.NODE_ENV !== 'production') dotenv();
 
 const app = express();
-const { PORT = 8080, USERNAME, PASSWORD, AUTH_TYPE, AUTH_TOKEN } = process.env;
+const { PORT = 5001, USERNAME, PASSWORD, AUTH_TYPE, AUTH_TOKEN } = process.env;
 
 // Serve static assets
 app.use(express.static(resolve(__dirname, '../dist')));

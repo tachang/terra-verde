@@ -6,7 +6,7 @@ const { string } = PropTypes;
 
 const TestComp = ({ testProp }) => (
   <div>
-    <h2>{testProp}</h2>
+    <h2>{`${testProp} update`}</h2>
   </div>
 );
 
