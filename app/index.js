@@ -1,9 +1,9 @@
+import React, { Component, PropTypes } from 'react';
+import { render } from 'react-dom';
 import axios from 'axios';
 
 
 const app = document.getElementById('app');
-const testEl = document.createElement('h1');
+const App = () => <div><h1>Terra Verde</h1></div>;
 
-testEl.textContent = 'Terra Verde';
-app.appendChild(testEl);
-
+render(<App />, app);
