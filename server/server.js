@@ -1,27 +1,23 @@
-if (process.env.NODE_ENV !== 'production') require('dotenv').config();
-
-const express = require('express');
+const { config: dotenv } = require('dotenv');
 const { resolve } = require('path');
+const express = require('express');
 
-const { get: axiosGet, post: axiosPost } = require('axios');
+const { getAuthToken, stornApiTest, getTasks } = require('./middleware.js');
+
+// In dev env, get ENV variables from ignored file ".env"
+if (process.env.NODE_ENV !== 'production') dotenv();
 
 const app = express();
-const { PORT = 8080, USERNAME, PASSWORD } = process.env;
+const { PORT = 8080, USERNAME = '', PASSWORD = '' } = process.env;
 
-
-const authData = { username: USERNAME, password: PASSWORD };
-
+// Serve static assets
 app.use(express.static(resolve(__dirname, '../app')));
 
-app.use('/auth', (req, res) => {
-  axiosPost('https://api.storn.co/api/v1/token/', authData)
-    .then(apiRes => res.send(apiRes.data));
-});
+// Auth request to get token
+app.use('/auth', getAuthToken(USERNAME, PASSWORD));
 
-app.use('/test', (req, res) => {
-  axiosGet('https://api.storn.co')
-    .then(apiRes => res.send(apiRes.data));
-});
+app.use('/test', stornApiTest);
+app.use('/tasks', getTasks);
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
