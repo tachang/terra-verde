@@ -11,10 +11,7 @@ const app = document.getElementById('app');
 
 render(
   <Provider store={store}>
-    <div>
-      <App />
-      <TestComp />
-    </div>
+    <App />
   </Provider>,
   app
 );

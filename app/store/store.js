@@ -1,11 +1,16 @@
-import { createStore, applyMiddleware, bindActionCreators } from 'redux';
+import { createStore, applyMiddleware, bindActionCreators, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { connect } from 'react-redux';
 
-import appReducer from '../reducers';
-import * as actions from '../actions/app_actions';
+import addTodo from '../add-todo';
 
-export const store = createStore(appReducer, applyMiddleware(thunkMiddleware));
+const { addTodoReducer, addTodoActions } = addTodo;
+const actions = { ...addTodoActions };
+const rootReducer = combineReducers({
+  addTodo: addTodoReducer,
+});
+
+export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
