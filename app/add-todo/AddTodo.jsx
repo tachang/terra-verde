@@ -3,21 +3,20 @@ import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 import { connector } from '../store/store';
 
-const { func } = PropTypes;
+const { string, shape } = PropTypes;
 
-const handleChange = update => (e) => {
-  e.preventDefault();
-  update(e.target.value);
-};
+// const handleChange = update => (e) => {
+//   e.preventDefault();
+//   update(e.target.value);
+// };
 
 const AddTodo = (props) => {
-  console.log('Logging props: ', props);
-  const onChange = handleChange(props.updateInput);
+  const { addTodo } = props;
 
   return (
     <div>
-      <Input placeholder="Search..." onChange={onChange} />
-      <h1>{props.addTodo.todoFormData}</h1>
+      <Input placeholder="Search..." />
+      <h1>{addTodo.todoFormData}</h1>
     </div>
   );
 };
@@ -27,7 +26,7 @@ AddTodo.defaultProps = {
 };
 
 AddTodo.propTypes = {
-  updateInput: func.isRequired
+  addTodo: shape({ string }).isRequired,
 };
 
-export default connector(AddTodo);
+export default AddTodo;
