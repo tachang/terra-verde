@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import 'semantic-ui-css/semantic.min.css';
+import './styles/main.scss';
 
 import { connector } from './store/store';
 import AddTodo from './add-todo/AddTodo';

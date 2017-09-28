@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
-import { connector } from '../store/store';
 
 const { string, shape } = PropTypes;
 
@@ -15,7 +14,7 @@ const AddTodo = (props) => {
 
   return (
     <div>
-      <Input placeholder="Search..." />
+      <Input id="add-task" placeholder="Search..." />
       <h1>{addTodo.todoFormData}</h1>
     </div>
   );
