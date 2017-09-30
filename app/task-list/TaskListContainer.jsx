@@ -1,20 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Table, TableRow, TableBody, TableHeader, TableHeaderColumn } from 'material-ui/Table';
 
-import { tasks } from './task-list.json';
 import TaskItem from './TaskItem';
 
-const { func } = PropTypes;
-console.log('Task list: ', tasks);
-
-const createTaskList = () =>
-  tasks.map((task, index) => <TaskItem key={String(index)} {...task} />);
-
+// const { func } = PropTypes;
 
 const TaskListContainer = (props) => {
-  console.log(props);
-  const data = { ...props, ...tasks };
+  console.log('Container props: ', props);
+
   return (
     <Table>
       <TableHeader>
@@ -24,8 +18,8 @@ const TaskListContainer = (props) => {
           <TableHeaderColumn>Summary</TableHeaderColumn>
         </TableRow>
       </TableHeader>
-      <TableBody {...data}>
-        {createTaskList()}
+      <TableBody>
+        <TaskItem {...props} />
       </TableBody>
     </Table>
   );

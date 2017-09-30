@@ -1,5 +1,8 @@
+import { tasks as taskList } from '../../task-list/task-list.json';
+
 const initialState = {
   todoFormData: '',
+  taskList
 };
 
 export const addTodoReducer = (state = initialState, action) => {

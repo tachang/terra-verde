@@ -35,8 +35,8 @@ module.exports = {
     port: 5000,
     contentBase: publicPath,
     proxy: [{
-      context: ['/api'],
-      target: 'http://localhost:8080',
+      context: ['/'],
+      target: 'http://localhost:5001',
       secure: false
     }]
   },
