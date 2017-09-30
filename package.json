@@ -39,6 +39,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "express": "^4.15.5",
+    "material-ui": "^0.19.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

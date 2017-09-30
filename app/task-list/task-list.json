@@ -1,0 +1,45 @@
+{
+  "tasks": [{
+      "id": 56,
+      "name": "Test task 1",
+      "description": "This is just a test task 1",
+      "priority": 1,
+      "is_complete": false,
+      "user": 7,
+      "created_at": "2017-09-26T07:07:05.924014Z",
+      "updated_at": "2017-09-26T07:07:05.924047Z"
+    },
+    {
+      "id": 57,
+      "name": "Test task 2",
+      "description": "This is just a test task 2",
+      "priority": 2,
+      "is_complete": false,
+      "user": 7,
+      "created_at": "2017-09-26T07:07:05.924014Z",
+      "updated_at": "2017-09-26T07:07:05.924047Z"
+    },
+    {
+      "id": 58,
+      "name": "Test task 3",
+      "description": "This is just a test task 3",
+      "priority": 3,
+      "is_complete": false,
+      "user": 7,
+      "created_at": "2017-09-26T07:07:05.924014Z",
+      "updated_at": "2017-09-26T07:07:05.924047Z"
+    },
+    {
+      "id": 59,
+      "name": "Test task 4",
+      "description": "This is just a test task 4",
+      "priority": 4,
+      "is_complete": false,
+      "user": 7,
+      "created_at": "2017-09-26T07:07:05.924014Z",
+      "updated_at": "2017-09-26T07:07:05.924047Z"
+    }
+  ]
+}
+  
+  

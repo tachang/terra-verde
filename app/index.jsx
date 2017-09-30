@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import './styles/main.scss';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import AppBar from 'material-ui/AppBar';
+import TaskListContainer from './task-list/TaskListContainer';
 
+
+import './styles/main.scss';
 import { connector } from './store/store';
 import AddTodo from './add-todo/AddTodo';
 
@@ -17,11 +23,13 @@ const App = (props) => {
   const onChange = handleChange(props.updateInput);
 
   return (
-    <div
-      onChange={onChange}
-    >
-      <h1>Testing 123</h1>
-      <AddTodo {...props} />
+    <div>
+      <AppBar title="Task List" />
+      <div onChange={onChange}>
+        <AddTodo {...props} />
+        <TaskListContainer {...props} />
+      </div>
+
     </div>
   );
 };
