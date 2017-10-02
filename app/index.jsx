@@ -10,20 +10,24 @@ import AddTodo from './add-todo/AddTodo';
 
 const { func } = PropTypes;
 
+// Change event handler
 const handleChange = update => (e) => {
   e.preventDefault();
   update(e.target.value);
 };
 
+// Click event handler
 const handleClick = props => (e) => {
   e.preventDefault();
+  console.log('Click target: ', e.target.offsetParent.id);
   const { postTaskAction, addTodo: { todoFormData, newTask } } = props;
 
-  if (todoFormData && todoFormData.length > 0) postTaskAction({ ...newTask, name: todoFormData });
+  if (todoFormData && todoFormData.length > 0 && e.target.offsetParent.id === 'save-task') {
+    postTaskAction({ ...newTask, name: todoFormData });
+  }
 };
 
 const App = (props) => {
-  const { addTodo: { todoFormData } } = props
   const onChange = handleChange(props.updateInput);
   const onClick = handleClick(props);
 

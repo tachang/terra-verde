@@ -2,6 +2,7 @@ const axios = require('axios');
 
 const { get: axiosGet, post: axiosPost } = axios;
 
+/* eslint no-console: off */
 // Get the auth token @params user, password
 exports.getAuthToken = (user, pass) => (req, res) => {
   const authData = { username: user, password: pass };
@@ -26,20 +27,14 @@ exports.getAllTasks = auth => (req, res) => {
 
 // Add a task to api @param auth
 exports.addTask = auth => (req, res) => {
-  const headers = { Authorization: 'Token 3dd8adc849887da3631747c462a5bba4a21eb75f', 'Content-type': 'application/json' };
+  const headers = { Authorization: auth };
   const { body: taskData } = req;
-  const reqData = { headers, data: taskData };
-  // console.log('Auth: ', auth);
-  // console.log('Task data from body: ', taskData);
-  // console.log('Req data: ', reqData);
 
   axios({
     method: 'post',
     url: 'https://api.storn.co/api/v1/task/',
     headers,
     data: taskData
-  }).then(apiRes => {
-      console.log('Task post API res: ', apiRes.data);
-      res.send(apiRes.data)
-    }).catch(err => console.log('/n', 'Err: ', err.response));
+  }).then(apiRes => res.send(apiRes.data))
+    .catch(err => console.log('error: ', err.response));
 };

@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'semantic-ui-react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const { string, shape, func } = PropTypes;
+const { string, shape, object } = PropTypes;
 
 
 const AddTodo = (props) => {
@@ -14,35 +13,19 @@ const AddTodo = (props) => {
     <div id="add-task">
       <form>
         <TextField id="add-task-input" placeholder="Search..." />
-        <RaisedButton id="save-task" label="Save Task" />
+        <RaisedButton id={'save-task'} data-mydata="mydata" label="Save Task" />
       </form>
       <h1>{addTodo.todoFormData}</h1>
     </div>
   );
 };
 
-// AddTodo.defaultProps = {
-// 
-// };
-// 
-// AddTodo.propTypes = {
-//   addTodo: shape({ string }).isRequired,
-// };
-
 AddTodo.defaultProps = {
-  onMouseUp: () => {},
-  onMouseDown: () => {},
-  onMouseLeave: () => {},
-  onTouchStart: () => {},
-  onTouchEnd: () => {},
+
 };
 
-AddTodo.defaultProps = {
-  onMouseUp: func,
-  onMouseDown: func,
-  onMouseLeave: func,
-  onTouchStart: func,
-  onTouchEnd: func
+AddTodo.propTypes = {
+  addTodo: shape({ string, object }).isRequired
 };
 
 export default AddTodo;
