@@ -30,6 +30,8 @@ export const addTodoReducer = (state = initialState, action) => {
 
       newState.newTask.name = action.payload;
       newState.todoFormData = '';
+
+      // eslint-disable-next-line no-console
       console.log('New State: ', newState);
       return newState;
     }

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Table, TableRow, TableBody, TableHeader, TableHeaderColumn } from 'material-ui/Table';
 
 import TaskItem from './TaskItem';
+
+const { func } = PropTypes;
 
 class TaskListContainer extends Component {
   componentDidMount() {
@@ -26,5 +28,9 @@ class TaskListContainer extends Component {
     );
   }
 }
+
+TaskListContainer.propTypes = {
+  getTasksAction: func.isRequired
+};
 
 export default TaskListContainer;

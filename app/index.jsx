@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import AppBar from 'material-ui/AppBar';
 import TaskListContainer from './task-list/TaskListContainer';
 
@@ -19,6 +18,7 @@ const handleChange = update => (e) => {
 // Click event handler
 const handleClick = props => (e) => {
   e.preventDefault();
+  // eslint-disable-next-line no-console
   console.log('Click target: ', e.target.offsetParent.id);
   const { postTaskAction, addTodo: { todoFormData, newTask } } = props;
 

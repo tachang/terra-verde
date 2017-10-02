@@ -6,7 +6,7 @@ const TaskItem = (props) => {
   const [checkBox] = children;
 
   return taskList.map((task, index) => {
-    const { id, priority, description, name } = task;
+    const { id, description, name } = task;
 
     return (
       <TableRow id={id} key={id}>
