@@ -2,20 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
 import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const { string, shape, func } = PropTypes;
 
-// const handleChange = update => (e) => {
-//   e.preventDefault();
-//   update(e.target.value);
-// };
 
 const AddTodo = (props) => {
   const { addTodo } = props;
 
   return (
     <div id="add-task">
-      <TextField id="add-task-input" placeholder="Search..." />
+      <form>
+        <TextField id="add-task-input" placeholder="Search..." />
+        <RaisedButton id="save-task" label="Save Task" />
+      </form>
       <h1>{addTodo.todoFormData}</h1>
     </div>
   );

@@ -13,6 +13,6 @@ const rootReducer = combineReducers({
 export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 const mapStateToProps = state => state;
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+export const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
 export const connector = connect(mapStateToProps, mapDispatchToProps);

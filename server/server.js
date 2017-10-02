@@ -1,9 +1,10 @@
 const { config: dotenv } = require('dotenv');
 const { resolve } = require('path');
 const express = require('express');
+const { json: jsonBodyParser } = require('body-parser');
 
 const {
-  getAuthToken, stornApiTest, getAllTasks,
+  getAuthToken, stornApiTest, getAllTasks, addTask
 } = require('./middleware.js');
 
 // In dev env, get ENV variables from ignored file ".env"
@@ -20,6 +21,7 @@ app.use('/auth', getAuthToken(USERNAME, PASSWORD));
 
 app.use('/test', stornApiTest);
 app.use('/tasks', getAllTasks(`${AUTH_TYPE} ${AUTH_TOKEN}`));
+app.post('/new-task', jsonBodyParser(), addTask(`${AUTH_TYPE} ${AUTH_TOKEN}`));
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console

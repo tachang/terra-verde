@@ -15,13 +15,26 @@ const handleChange = update => (e) => {
   update(e.target.value);
 };
 
+const handleClick = props => (e) => {
+  e.preventDefault();
+  const { postTaskAction, addTodo: { todoFormData, newTask } } = props;
+
+  if (todoFormData && todoFormData.length > 0) postTaskAction({ ...newTask, name: todoFormData });
+};
+
 const App = (props) => {
+  const { addTodo: { todoFormData } } = props
   const onChange = handleChange(props.updateInput);
+  const onClick = handleClick(props);
 
   return (
     <div>
       <AppBar title="Task List" />
-      <div onChange={onChange}>
+      <div
+        role="presentation"
+        onChange={onChange}
+        onClick={onClick}
+      >
         <AddTodo {...props} />
         <TaskListContainer {...props} />
       </div>

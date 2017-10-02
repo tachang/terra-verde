@@ -1,6 +1,6 @@
 {
   "presets": [
-    ["env", { "modules": false, "useBuiltIns": true }], ["react"],
+    ["env", { "modules": false, "useBuiltIns": true }], "stage-0", "react"
   ],
-  "plugins": ["transform-object-rest-spread"]
+  "plugins": ["transform-object-rest-spread", "babel-plugin-transform-runtime"]
 }
