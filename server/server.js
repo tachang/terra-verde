@@ -18,7 +18,6 @@ app.use(express.static(resolve(__dirname, '../dist')));
 
 // Auth request to get token
 app.use('/auth', getAuthToken(USERNAME, PASSWORD));
-
 app.use('/test', stornApiTest);
 app.use('/tasks', getAllTasks(`${AUTH_TYPE} ${AUTH_TOKEN}`));
 app.post('/new-task', jsonBodyParser(), addTask(`${AUTH_TYPE} ${AUTH_TOKEN}`));

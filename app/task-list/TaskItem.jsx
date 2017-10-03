@@ -2,7 +2,7 @@ import React from 'react';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
 
 const TaskItem = (props) => {
-  const { children, addTodo: { taskList } } = props;
+  const { children, addTask: { taskList } } = props;
   const [checkBox] = children;
 
   return taskList.map((task, index) => {

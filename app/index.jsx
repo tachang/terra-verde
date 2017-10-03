@@ -5,7 +5,7 @@ import TaskListContainer from './task-list/TaskListContainer';
 
 import './styles/main.scss';
 import { connector } from './store/store';
-import AddTodo from './add-todo/AddTodo';
+import AddTask from './add-task/AddTask';
 
 const { func } = PropTypes;
 
@@ -39,7 +39,7 @@ const App = (props) => {
         onChange={onChange}
         onClick={onClick}
       >
-        <AddTodo {...props} />
+        <AddTask {...props} />
         <TaskListContainer {...props} />
       </div>
 

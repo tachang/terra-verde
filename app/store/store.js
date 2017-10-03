@@ -2,12 +2,12 @@ import { createStore, applyMiddleware, bindActionCreators, combineReducers } fro
 import thunkMiddleware from 'redux-thunk';
 import { connect } from 'react-redux';
 
-import addTodo from '../add-todo';
+import addTask from '../add-task';
 
-const { addTodoReducer, addTodoActions } = addTodo;
-const actions = { ...addTodoActions };
+const { addTaskReducer, addTaskActions } = addTask;
+const actions = { ...addTaskActions };
 const rootReducer = combineReducers({
-  addTodo: addTodoReducer,
+  addTask: addTaskReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));

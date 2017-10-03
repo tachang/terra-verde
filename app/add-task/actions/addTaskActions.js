@@ -1,4 +1,4 @@
-import * as taskActions from './getTasks';
+import { getAllTasks, postNewTask } from './asyncTaskUtils';
 
 export const updateInput = inputData =>
   ({ type: 'UPDATE_INPUT', payload: inputData });
@@ -10,13 +10,13 @@ export const addNewTask = taskTitle => ({ type: 'ADD_NEW_TASK', payload: taskTit
 
 export const getTasksAction = () =>
   (dispatch) => {
-    taskActions.getAllTasks()
+    getAllTasks()
       .then(taskRes => dispatch({ type: 'GET_ALL_TASKS', payload: taskRes.data.results }));
   };
 
 export const postTaskAction = task =>
   (dispatch) => {
-    taskActions.postNewTask(task)
+    postNewTask(task)
       // .then(taskRes => dispatch({ type: 'GET_ALL_TASKS', payload: taskRes.data.results }));
       .then(taskRes => console.warn('Post new task res: ', taskRes));
   };

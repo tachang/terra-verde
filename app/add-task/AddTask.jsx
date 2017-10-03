@@ -6,8 +6,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 const { string, shape, object } = PropTypes;
 
 
-const AddTodo = (props) => {
-  const { addTodo } = props;
+const AddTask = (props) => {
+  const { addTask } = props;
 
   return (
     <div id="add-task">
@@ -15,17 +15,17 @@ const AddTodo = (props) => {
         <TextField id="add-task-input" placeholder="Search..." />
         <RaisedButton id={'save-task'} data-mydata="mydata" label="Save Task" />
       </form>
-      <h1>{addTodo.todoFormData}</h1>
+      <h1>{addTask.todoFormData}</h1>
     </div>
   );
 };
 
-AddTodo.defaultProps = {
+AddTask.defaultProps = {
 
 };
 
-AddTodo.propTypes = {
-  addTodo: shape({ string, object }).isRequired
+AddTask.propTypes = {
+  addTask: shape({ string, object }).isRequired
 };
 
-export default AddTodo;
+export default AddTask;
