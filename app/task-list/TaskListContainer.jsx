@@ -16,7 +16,8 @@ class TaskListContainer extends Component {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHeaderColumn>ID</TableHeaderColumn>
+            <TableHeaderColumn>Priority</TableHeaderColumn>
+            <TableHeaderColumn>Id</TableHeaderColumn>
             <TableHeaderColumn>Title</TableHeaderColumn>
             <TableHeaderColumn>Summary</TableHeaderColumn>
           </TableRow>

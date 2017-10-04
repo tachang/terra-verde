@@ -1,6 +1,7 @@
 const { config: dotenv } = require('dotenv');
 const { resolve } = require('path');
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const { json: jsonBodyParser } = require('body-parser');
 
 const {
@@ -15,6 +16,7 @@ const { PORT = 5001, USERNAME, PASSWORD, AUTH_TYPE, AUTH_TOKEN } = process.env;
 
 // Serve static assets
 app.use(express.static(resolve(__dirname, '../dist')));
+app.use(cookieParser());
 
 // Auth request to get token
 app.use('/auth', getAuthToken(USERNAME, PASSWORD));

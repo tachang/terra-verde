@@ -5,13 +5,14 @@ const TaskItem = (props) => {
   const { children, addTask: { taskList } } = props;
   const [checkBox] = children;
 
-  return taskList.map((task, index) => {
-    const { id, description, name } = task;
+  return taskList.map((task) => {
+    const { id, priority, description, name } = task;
 
     return (
       <TableRow id={id} key={id}>
         {checkBox}
-        <TableRowColumn>{index}</TableRowColumn>
+        <TableRowColumn>{priority}</TableRowColumn>
+        <TableRowColumn>{id}</TableRowColumn>
         <TableRowColumn>{name}</TableRowColumn>
         <TableRowColumn>{description}</TableRowColumn>
       </TableRow>
