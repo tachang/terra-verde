@@ -1,13 +1,13 @@
 import { getAllTasks, postNewTask } from './asyncTaskUtils';
 
+// Handles updates to the input data
 export const updateInput = inputData =>
   ({ type: 'UPDATE_INPUT', payload: inputData });
 
-export const changeTestProp = () =>
-  ({ type: 'UPDATE_TEST_PROP', payload: 'Test props changed!!!' });
-
+// NOTE: currently unused
 export const addNewTask = taskTitle => ({ type: 'ADD_NEW_TASK', payload: taskTitle });
 
+// Get all tasks async action creator
 export const getTasksAction = () =>
   (dispatch) => {
     getAllTasks()

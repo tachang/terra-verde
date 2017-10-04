@@ -21,18 +21,18 @@ exports.stornApiTest = (req, res) => {
 };
 
 // Gets all tasks from api @param auth
-exports.getAllTasks = auth => (req, res) => {
+exports.getAllTasks = authType => (req, res) => {
   const { cookies: { authorization } } = req;
-  const headers = { Authorization: `Token ${authorization.token}` };
+  const headers = { Authorization: `${authType} ${authorization.token}` };
 
   axiosGet('https://api.storn.co/api/v1/task/', { headers })
     .then(apiRes => res.send(apiRes.data));
 };
 
 // Add a task to api @param auth
-exports.addTask = auth => (req, res) => {
+exports.addTask = authType => (req, res) => {
   const { cookies: { authorization } } = req;
-  const headers = { Authorization: `Token ${authorization.token}` };
+  const headers = { Authorization: `${authType} ${authorization.token}` };
   const { body: taskData } = req;
 
   axios({

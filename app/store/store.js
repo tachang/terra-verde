@@ -2,8 +2,10 @@ import { createStore, applyMiddleware, bindActionCreators, combineReducers } fro
 import thunkMiddleware from 'redux-thunk';
 import { connect } from 'react-redux';
 
+// Relative imports
 import addTask from '../add-task';
 
+// Creating redux store and connector
 const { addTaskReducer, addTaskActions } = addTask;
 const actions = { ...addTaskActions };
 const rootReducer = combineReducers({

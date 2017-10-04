@@ -12,7 +12,7 @@ const {
 if (process.env.NODE_ENV !== 'production') dotenv();
 
 const app = express();
-const { PORT = 5001, USERNAME, PASSWORD, AUTH_TYPE, AUTH_TOKEN } = process.env;
+const { PORT = 5001, USERNAME, PASSWORD, AUTH_TYPE } = process.env;
 
 // Serve static assets
 app.use(express.static(resolve(__dirname, '../dist')));
@@ -21,8 +21,8 @@ app.use(cookieParser());
 // Auth request to get token
 app.use('/auth', getAuthToken(USERNAME, PASSWORD));
 app.use('/test', stornApiTest);
-app.use('/tasks', getAllTasks(`${AUTH_TYPE} ${AUTH_TOKEN}`));
-app.post('/new-task', jsonBodyParser(), addTask(`${AUTH_TYPE} ${AUTH_TOKEN}`));
+app.use('/tasks', getAllTasks(`${AUTH_TYPE}`));
+app.post('/new-task', jsonBodyParser(), addTask(`${AUTH_TYPE}`));
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
