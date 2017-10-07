@@ -1,4 +1,6 @@
+import { updateTaskInputs } from '../actions/addTaskUtils';
 // import { tasks as taskList } from '../../task-list/task-list.json';
+
 
 const newTaskObject = {
   name: '',
@@ -8,7 +10,11 @@ const newTaskObject = {
 };
 
 const initialState = {
-  todoFormData: '',
+  inputs: {
+    priority: '',
+    title: '',
+    description: ''
+  },
   taskList: [],
   newTask: { ...newTaskObject }
 };
@@ -18,7 +24,7 @@ export const addTodoReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case 'UPDATE_INPUT': {
-      return { ...state, todoFormData: action.payload };
+      return { ...state, inputs: action.payload };
     }
 
     case 'GET_ALL_TASKS': {

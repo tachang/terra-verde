@@ -1,9 +1,11 @@
 import { getAllTasks, postNewTask } from './asyncTaskUtils';
-import { handleGetTaskResponse, findUpdateTask, selectTaskChk } from './addTaskUtils';
+import {
+  handleGetTaskResponse, findUpdateTask, selectTaskChk, updateTaskInputs 
+} from './addTaskUtils';
 
 // Handles updates to the input data
-export const updateInput = inputData =>
-  ({ type: 'UPDATE_INPUT', payload: inputData });
+export const updateInput = (inputs, inputData) =>
+  ({ type: 'UPDATE_INPUT', payload: updateTaskInputs(inputs, inputData) });
 
 // NOTE: currently unused
 export const addNewTask = taskTitle => ({ type: 'ADD_NEW_TASK', payload: taskTitle });

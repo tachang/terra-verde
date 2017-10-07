@@ -37,3 +37,23 @@ export const selectTaskChk = (tasks, taskId) => {
 
   return findUpdateTask(tasks, taskId, toggleCheck);
 };
+
+export const updateTaskInputs = (inputs, inputObj) => {
+  console.log('input obj: ', inputObj);
+  console.log('input fields: ', inputs);
+  const { inputField = '', inputValue = '' } = inputObj;
+  const newInputs = { ...inputs };
+  const currentValue = newInputs[inputField];
+
+  if (inputField === 'priority') {
+    newInputs[inputField] = inputValue;
+
+    return newInputs;
+  }
+  
+  // const newValue = `${currentValue}${inputValue}`;
+
+  newInputs[inputField] = inputValue;
+
+  return newInputs;
+};

@@ -13,19 +13,23 @@ const { func } = PropTypes;
 const handleChange = props => (e) => {
   e.preventDefault();
   if (e.type !== 'change') return;
-  // const { target } = e;
-  // const { id, classList } = target;
-  // 
-  // if () {
-  //   
-  // }
-  // props.updateInput(e.target.value);
+  const { target } = e;
+  const { offsetParent } = target;
+
+  // console.dir(target);
+  // console.log('On change props: ', classList);
+  console.log('Input target: ', target.id);
+  if (offsetParent.className === 'task-input') {
+    const inputData = { inputField: target.id, inputValue: target.value };
+
+    props.updateInput(props.addTask.inputs, inputData);
+  }
 };
 
 // Click event handler
 const handleClick = props => (e) => {
   e.preventDefault();
-  console.log('index props: ', props);
+  // console.log('index props: ', props);
   // console.log(''e.target.firstChild);
   // eslint-disable-next-line no-console
   if (e.target.dataset.chkid) {
