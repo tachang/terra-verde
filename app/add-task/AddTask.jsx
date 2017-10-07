@@ -10,7 +10,7 @@ const { arrayOf, element } = PropTypes;
 
 const AddTask = (props) => {
   const { addTask: { inputs } } = props;
-  const { priority, title, description } = inputs;
+  const { priority, name, description } = inputs;
 
   return (
     <TableRow>
@@ -28,9 +28,9 @@ const AddTask = (props) => {
       <TableRowColumn style={idColStyle}>100</TableRowColumn>
       <TableRowColumn>
         <TextField
-          id="title"
+          id="name"
           type="text"
-          value={title}
+          value={name}
           className="task-input"
           placeholder="Title..."
         />

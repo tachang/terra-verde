@@ -18,22 +18,30 @@ const handleChange = props => (e) => {
 
   // console.dir(target);
   // console.log('On change props: ', classList);
-  console.log('Input target: ', target.id);
+  // console.log('Input target: ', target.id);
   if (offsetParent.className === 'task-input') {
     const inputData = { inputField: target.id, inputValue: target.value };
 
-    props.updateInput(props.addTask.inputs, inputData);
+    props.updateInputAction(props.addTask.inputs, inputData);
   }
 };
 
 // Click event handler
 const handleClick = props => (e) => {
   e.preventDefault();
+  const { offsetParent } = e.target;
   // console.log('index props: ', props);
-  // console.log(''e.target.firstChild);
+  // console.dir(e.target);
   // eslint-disable-next-line no-console
+  // console.log('New Task');
+  // console.dir(e.target);
   if (e.target.dataset.chkid) {
-    props.selectTask(Number(e.target.dataset.chkid));
+    props.selectTaskAction(Number(e.target.dataset.chkid));
+  }
+
+  if (e.target.parentNode.id === 'save-task') {
+    props.saveTaskAction(props.addTask.inputs, props.addTask.newTask);
+    props.postTaskAction(props.addTask.newTask);
   }
   // console.log('Click target: ', e.target.dataset.chkid);
   // const { postTaskAction, addTask: { todoFormData, newTask } } = props;
@@ -68,7 +76,7 @@ App.defaultProps = {
 };
 
 App.propTypes = {
-  updateInput: func.isRequired
+  updateInputAction: func.isRequired
 };
 
 export default connector(App);

@@ -35,11 +35,13 @@ exports.addTask = authType => (req, res) => {
   const headers = { Authorization: `${authType} ${authorization.token}` };
   const { body: taskData } = req;
 
+  console.log('TaskData: ', taskData);
+
   axios({
     method: 'post',
     url: 'https://api.storn.co/api/v1/task/',
     headers,
     data: taskData
   }).then(apiRes => res.send(apiRes.data))
-    .catch(err => console.log('error: ', err.response));
+    .catch(err => console.log('error: ', err.response.data));
 };

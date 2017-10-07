@@ -1,14 +1,22 @@
-export const createUITasks = tasks =>
-  tasks.map((taskObj) => {
-    const newTask = { ...taskObj };
+const createUITask = task => ({ ...task, selected: false });
 
-    newTask.selected = false;
+export const createUITaskList = tasks =>
+  tasks.map(createUITask);
 
-    return newTask;
-  });
+export const handleAddEditTaskResponse = (taskListObj, task) => {
+  const { pureTasks, uiTasks } = taskListObj;
+  const uiTask = createUITask(task);
+  const newPureTasks = [...pureTasks];
+  const newUiTasks = [...uiTasks];
+
+  newUiTasks.push(uiTask);
+  newPureTasks.push(task);
+
+  return { pureTasks: newPureTasks, uiTasks: newUiTasks };
+};
 
 export const handleGetTaskResponse = (taskList) => {
-  const uiTasks = createUITasks(taskList);
+  const uiTasks = createUITaskList(taskList);
 
   return { taskList, uiTasks };
 };
@@ -39,21 +47,32 @@ export const selectTaskChk = (tasks, taskId) => {
 };
 
 export const updateTaskInputs = (inputs, inputObj) => {
-  console.log('input obj: ', inputObj);
-  console.log('input fields: ', inputs);
   const { inputField = '', inputValue = '' } = inputObj;
   const newInputs = { ...inputs };
-  const currentValue = newInputs[inputField];
 
   if (inputField === 'priority') {
     newInputs[inputField] = inputValue;
 
     return newInputs;
   }
-  
-  // const newValue = `${currentValue}${inputValue}`;
 
   newInputs[inputField] = inputValue;
 
   return newInputs;
 };
+
+export const saveNewTask = (inputs, newTaskObj) => {
+  const inputsArr = Object.keys(inputs);
+
+  const newTask = inputsArr.reduce((acc, curr) => {
+    acc[curr] = inputs[curr];
+
+    return acc;
+  }, {});
+
+  return newTask;
+};
+
+// export const recieveNewTask = (taskList, newTask) => {
+//   const updatedTask
+// };

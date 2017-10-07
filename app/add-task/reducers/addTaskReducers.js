@@ -11,8 +11,8 @@ const newTaskObject = {
 
 const initialState = {
   inputs: {
-    priority: '',
-    title: '',
+    name: '',
+    priority: 1,
     description: ''
   },
   taskList: [],
@@ -52,6 +52,14 @@ export const addTodoReducer = (state = initialState, action) => {
       const { taskList: { pureTasks } } = newState;
 
       return { ...state, taskList: { uiTasks: action.payload, pureTasks } };
+    }
+
+    case 'SAVE_NEW_TASK': {
+      return { ...state, newTask: action.payload };
+    }
+
+    case 'NEW_TASK_RECIVED': {
+      return { ...state, taskList: action.payload };
     }
 
     default:
