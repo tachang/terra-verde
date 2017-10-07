@@ -1,7 +1,14 @@
-#add-task {
-  margin-left: 100px;
+#priority {
+  background-color: white;
+}
+
+input #title {
+  width: 150px;
+}
+
+#descr {
   input {
-    width: 300px;
+    width: 200px;
   }
 }
 

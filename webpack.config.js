@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const { NamedModulesPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const srcPath = resolve(__dirname, './app/entry.jsx');
@@ -26,6 +27,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new NamedModulesPlugin(),
     new HtmlWebpackPlugin({
       template: './template.html'
     })

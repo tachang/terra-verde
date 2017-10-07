@@ -10,25 +10,37 @@ import AddTask from './add-task/AddTask';
 const { func } = PropTypes;
 
 // Change event handler
-const handleChange = update => (e) => {
+const handleChange = props => (e) => {
   e.preventDefault();
-  update(e.target.value);
+  if (e.type !== 'change') return;
+  // const { target } = e;
+  // const { id, classList } = target;
+  // 
+  // if () {
+  //   
+  // }
+  // props.updateInput(e.target.value);
 };
 
 // Click event handler
 const handleClick = props => (e) => {
   e.preventDefault();
+  console.log('index props: ', props);
+  // console.log(''e.target.firstChild);
   // eslint-disable-next-line no-console
-  console.log('Click target: ', e.target.offsetParent.id);
-  const { postTaskAction, addTodo: { todoFormData, newTask } } = props;
-
-  if (todoFormData && todoFormData.length > 0 && e.target.offsetParent.id === 'save-task') {
-    postTaskAction({ ...newTask, name: todoFormData });
+  if (e.target.dataset.chkid) {
+    props.selectTask(Number(e.target.dataset.chkid));
   }
+  // console.log('Click target: ', e.target.dataset.chkid);
+  // const { postTaskAction, addTask: { todoFormData, newTask } } = props;
+  // 
+  // if (todoFormData && todoFormData.length > 0 && e.target.offsetParent.id === 'save-task') {
+  //   postTaskAction({ ...newTask, name: todoFormData });
+  // // }
 };
 
 const App = (props) => {
-  const onChange = handleChange(props.updateInput);
+  const onChange = handleChange(props);
   const onClick = handleClick(props);
 
   return (
@@ -39,7 +51,7 @@ const App = (props) => {
         onChange={onChange}
         onClick={onClick}
       >
-        <AddTask {...props} />
+        {/* <AddTask {...props} /> */}
         <TaskListContainer {...props} />
       </div>
 

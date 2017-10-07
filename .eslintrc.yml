@@ -1,5 +1,6 @@
 extends: airbnb
-
+globals:
+  window: true
 rules:
   import/no-extraneous-dependencies: off
   comma-dangle: off

@@ -1,4 +1,4 @@
-import { tasks as taskList } from '../../task-list/task-list.json';
+// import { tasks as taskList } from '../../task-list/task-list.json';
 
 const newTaskObject = {
   name: '',
@@ -14,26 +14,38 @@ const initialState = {
 };
 
 export const addTodoReducer = (state = initialState, action) => {
+  const newState = { ...state };
+
   switch (action.type) {
     case 'UPDATE_INPUT': {
       return { ...state, todoFormData: action.payload };
     }
 
     case 'GET_ALL_TASKS': {
-      const updatedTasks = [...state.taskList, ...action.payload];
+      const { uiTasks, taskList: pureTasks } = action.payload;
+      const newTaskList = { pureTasks: [...pureTasks], uiTasks: [...uiTasks] };
 
-      return { ...state, taskList: updatedTasks };
+      return { ...state, taskList: newTaskList };
     }
 
     case 'ADD_NEW_TASK': {
-      const newState = { ...state };
-
       newState.newTask.name = action.payload;
       newState.todoFormData = '';
 
       // eslint-disable-next-line no-console
-      console.log('New State: ', newState);
       return newState;
+    }
+
+    case 'UPDATE_TASK': {
+      const { taskList: { pureTasks } } = newState;
+
+      return { ...state, taskList: { uiTasks: action.payload, ...pureTasks } };
+    }
+
+    case 'TOGGLE_SELECT_TASK': {
+      const { taskList: { pureTasks } } = newState;
+
+      return { ...state, taskList: { uiTasks: action.payload, pureTasks } };
     }
 
     default:

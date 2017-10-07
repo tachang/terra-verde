@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import { Table, TableRow, TableBody, TableHeader, TableHeaderColumn } from 'material-ui/Table';
 
 import TaskItem from './TaskItem';
+import AddTask from '../add-task/AddTask';
+
+const idColStyle = {
+  width: '50px'
+};
 
 const { func } = PropTypes;
 
@@ -17,12 +22,14 @@ class TaskListContainer extends Component {
         <TableHeader>
           <TableRow>
             <TableHeaderColumn>Priority</TableHeaderColumn>
-            <TableHeaderColumn>Id</TableHeaderColumn>
+            <TableHeaderColumn style={idColStyle}>Id</TableHeaderColumn>
             <TableHeaderColumn>Title</TableHeaderColumn>
             <TableHeaderColumn>Summary</TableHeaderColumn>
+            <TableHeaderColumn>Save</TableHeaderColumn>
           </TableRow>
         </TableHeader>
-        <TableBody>
+        <TableBody showRowHover>
+          <AddTask {...this.props} />
           <TaskItem {...this.props} />
         </TableBody>
       </Table>

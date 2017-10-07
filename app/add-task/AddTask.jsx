@@ -1,31 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+import { TableRow, TableRowColumn } from 'material-ui/Table';
+import { Save, Delete } from 'material-ui-icons';
 
-const { string, shape, object } = PropTypes;
+import { idColStyle, textStyles } from './styles/componentStyles';
 
+const { arrayOf, element } = PropTypes;
 
 const AddTask = (props) => {
-  const { addTask } = props;
+  const { children } = props;
+  const [checkBox] = children;
 
   return (
-    <div id="add-task">
-      <form>
-        <TextField id="add-task-input" placeholder="Search..." />
-        <RaisedButton id={'save-task'} data-mydata="mydata" label="Save Task" />
-      </form>
-      <h1>{addTask.todoFormData}</h1>
-    </div>
+    <TableRow>
+      <TableRowColumn><div>Add Task:</div></TableRowColumn>
+      <TableRowColumn>
+        <TextField type="number" id="priority" style={textStyles} placeholder="0" />
+      </TableRowColumn>
+      <TableRowColumn style={idColStyle}>100</TableRowColumn>
+      <TableRowColumn>
+        <TextField id="title" className="add-task-input" placeholder="Title..." />
+      </TableRowColumn>
+      <TableRowColumn>
+        <TextField id="descr" className="add-task-input" placeholder="Descr..." />
+      </TableRowColumn>
+      <TableRowColumn><Save id="save-task" /><Delete id="delete-task" /></TableRowColumn>
+    </TableRow>
   );
 };
 
 AddTask.defaultProps = {
-
+  children: []
 };
 
 AddTask.propTypes = {
-  addTask: shape({ string, object }).isRequired
+  children: arrayOf(element).isRequired
 };
 
 export default AddTask;
