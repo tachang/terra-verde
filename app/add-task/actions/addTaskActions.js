@@ -1,3 +1,4 @@
+/* eslint no-console: off */
 import { getAllTasks, postNewTask } from './asyncTaskUtils';
 import {
   handleGetTaskResponse, findUpdateTask, selectTaskChk,
@@ -11,6 +12,7 @@ export const updateInputAction = (inputs, inputData) =>
 // NOTE: currently unused
 export const addNewTask = taskTitle => ({ type: 'ADD_NEW_TASK', payload: taskTitle });
 
+// The actions creator for updating a task
 export const updateTaskAction = (taskId, propObj) =>
   (dispatch, getState) => {
     const { addTask: { taskList } } = getState();
@@ -20,6 +22,7 @@ export const updateTaskAction = (taskId, propObj) =>
     dispatch({ type: 'UPDATE_TASK', payload: updatedTasks });
   };
 
+// The action creator for selecting a task
 export const selectTaskAction = taskId =>
   (dispatch, getState) => {
     const { addTask: { taskList } } = getState();
@@ -39,9 +42,11 @@ export const getTasksAction = () =>
       });
   };
 
+// The actions creator for saving a task
 export const saveTaskAction = (inputs, newTask) =>
   ({ type: 'SAVE_NEW_TASK', payload: saveNewTask(inputs, newTask) });
 
+// The action creator for posting a task
 export const postTaskAction = task =>
   (dispatch, getState) => {
     const { addTask: { taskList, inputs } } = getState();
@@ -55,5 +60,4 @@ export const postTaskAction = task =>
       })
       .then(() => dispatch(getTasksAction()))
       .catch(err => console.log(err.response));
-    // .then(taskRes => console.warn('Post new task res: ', taskRes.data));
   };

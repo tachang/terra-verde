@@ -21,11 +21,12 @@ class TaskListContainer extends Component {
       <Table>
         <TableHeader>
           <TableRow>
+            <TableHeaderColumn><div /></TableHeaderColumn>
             <TableHeaderColumn>Priority</TableHeaderColumn>
             <TableHeaderColumn style={idColStyle}>Id</TableHeaderColumn>
             <TableHeaderColumn>Title</TableHeaderColumn>
             <TableHeaderColumn>Summary</TableHeaderColumn>
-            <TableHeaderColumn>Save</TableHeaderColumn>
+            <TableHeaderColumn>Save/Delete</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody showRowHover>

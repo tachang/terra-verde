@@ -6,7 +6,7 @@ import { Save, Delete } from 'material-ui-icons';
 
 import { idColStyle, textStyles } from './styles/componentStyles';
 
-const { arrayOf, element } = PropTypes;
+const { shape, object } = PropTypes;
 
 const AddTask = (props) => {
   const { addTask: { inputs } } = props;
@@ -53,7 +53,7 @@ AddTask.defaultProps = {
 };
 
 AddTask.propTypes = {
-  children: arrayOf(element).isRequired
+  addTask: shape({ object }).isRequired
 };
 
 export default AddTask;

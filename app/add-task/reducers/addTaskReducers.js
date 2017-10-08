@@ -1,7 +1,3 @@
-import { updateTaskInputs } from '../actions/addTaskUtils';
-// import { tasks as taskList } from '../../task-list/task-list.json';
-
-
 const newTaskObject = {
   name: '',
   is_complete: false,

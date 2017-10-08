@@ -1,8 +1,11 @@
+// Creates a new task with UI properties
 const createUITask = task => ({ ...task, selected: false });
 
+// Creates a new list of UI tasks
 export const createUITaskList = tasks =>
   tasks.map(createUITask);
 
+// Creates two 'pureTasks' and 'uiTasks', lists on get all tasks response
 export const handleAddEditTaskResponse = (taskListObj, task) => {
   const { pureTasks, uiTasks } = taskListObj;
   const uiTask = createUITask(task);
@@ -15,12 +18,14 @@ export const handleAddEditTaskResponse = (taskListObj, task) => {
   return { pureTasks: newPureTasks, uiTasks: newUiTasks };
 };
 
+// // Creates two 'pureTasks' and 'uiTasks', lists on get all tasks response
 export const handleGetTaskResponse = (taskList) => {
   const uiTasks = createUITaskList(taskList);
 
   return { taskList, uiTasks };
 };
 
+// Finds a task from the collection
 const findTask = (tasks, taskId) =>
   tasks.find(({ id }) => taskId === id);
 
@@ -30,6 +35,7 @@ const updateTask = (task, propObj) =>
 const getTaskIndex = (tasks, taskId) =>
   tasks.findIndex(({ id }) => id === taskId);
 
+// Finds a task and updates specified properties on it
 export const findUpdateTask = (tasks, taskId, propObj) => {
   const newTasks = [...tasks];
   const taskToUpdate = findTask(newTasks, taskId);
@@ -39,6 +45,7 @@ export const findUpdateTask = (tasks, taskId, propObj) => {
   return newTasks;
 };
 
+// Handles check box selection of a task
 export const selectTaskChk = (tasks, taskId) => {
   const { selected } = findTask(tasks, taskId);
   const toggleCheck = { selected: !selected };
@@ -46,6 +53,7 @@ export const selectTaskChk = (tasks, taskId) => {
   return findUpdateTask(tasks, taskId, toggleCheck);
 };
 
+// Handles creation of the new task object
 export const updateTaskInputs = (inputs, inputObj) => {
   const { inputField = '', inputValue = '' } = inputObj;
   const newInputs = { ...inputs };
@@ -61,6 +69,7 @@ export const updateTaskInputs = (inputs, inputObj) => {
   return newInputs;
 };
 
+// Handles creation of the new task object
 export const saveNewTask = (inputs, newTaskObj) => {
   const inputsArr = Object.keys(inputs);
 
@@ -72,7 +81,3 @@ export const saveNewTask = (inputs, newTaskObj) => {
 
   return newTask;
 };
-
-// export const recieveNewTask = (taskList, newTask) => {
-//   const updatedTask
-// };
