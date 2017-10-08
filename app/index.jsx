@@ -5,7 +5,6 @@ import TaskListContainer from './task-list/TaskListContainer';
 
 import './styles/main.scss';
 import { connector } from './store/store';
-import AddTask from './add-task/AddTask';
 
 const { func } = PropTypes;
 
@@ -30,6 +29,7 @@ const handleChange = props => (e) => {
 const handleClick = props => (e) => {
   e.preventDefault();
   const { offsetParent } = e.target;
+  // const { addTask:  }
   // console.log('index props: ', props);
   // console.dir(e.target);
   // eslint-disable-next-line no-console
@@ -39,8 +39,10 @@ const handleClick = props => (e) => {
     props.selectTaskAction(Number(e.target.dataset.chkid));
   }
 
-  if (e.target.parentNode.id === 'save-task') {
-    props.saveTaskAction(props.addTask.inputs, props.addTask.newTask);
+  console.log('Element: ', e.target);
+  if (e.target.parentNode.id === 'save-task' || e.target.id === 'save-task') {
+    console.log('Save clicked');
+    // props.saveTaskAction(props.addTask.inputs, props.addTask.newTask);
     props.postTaskAction(props.addTask.newTask);
   }
   // console.log('Click target: ', e.target.dataset.chkid);

@@ -39,18 +39,21 @@ export const getTasksAction = () =>
       });
   };
 
+export const saveTaskAction = (inputs, newTask) =>
+  ({ type: 'SAVE_NEW_TASK', payload: saveNewTask(inputs, newTask) });
+
 export const postTaskAction = task =>
   (dispatch, getState) => {
-    const { addTask: { taskList } } = getState();
+    const { addTask: { taskList, inputs } } = getState();
 
-    postNewTask(task)
+    dispatch(saveTaskAction(inputs, task));
+
+    postNewTask(getState().addTask.newTask)
       .then((taskRes) => {
         const updatedTasks = handleAddEditTaskResponse(taskList, taskRes.data);
         dispatch({ type: 'NEW_TASK_RECIVED', payload: updatedTasks });
       })
+      .then(() => dispatch(getTasksAction()))
       .catch(err => console.log(err.response));
     // .then(taskRes => console.warn('Post new task res: ', taskRes.data));
   };
-
-export const saveTaskAction = (inputs, newTask) =>
-  ({ type: 'SAVE_NEW_TASK', payload: saveNewTask(inputs, newTask) });
