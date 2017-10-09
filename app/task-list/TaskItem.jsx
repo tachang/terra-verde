@@ -23,7 +23,7 @@ const TaskItem = (props) => {
         <TableRowColumn>{name}</TableRowColumn>
         <TableRowColumn>{description}</TableRowColumn>
         <TableRowColumn>
-          <Save id={`save-${id}`} /><Delete id={`save-${id}`} />
+          <Save id={`save-${id}`} /><Delete id={`delete-${id}`} />
         </TableRowColumn>
       </TableRow>
     );

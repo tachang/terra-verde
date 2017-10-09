@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const { json: jsonBodyParser } = require('body-parser');
 
 const {
-  getAuthToken, stornApiTest, getAllTasks, addTask
+  getAuthToken, stornApiTest, getAllTasks, addTask, deleteSingleTask
 } = require('./middleware.js');
 
 // In dev env, get ENV variables from ignored file ".env"
@@ -23,6 +23,7 @@ app.use('/auth', getAuthToken(USERNAME, PASSWORD));
 app.use('/test', stornApiTest);
 app.use('/tasks', getAllTasks(`${AUTH_TYPE}`));
 app.post('/new-task', jsonBodyParser(), addTask(`${AUTH_TYPE}`));
+app.delete('/delete-task', jsonBodyParser(), deleteSingleTask(`${AUTH_TYPE}`));
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console

@@ -1,6 +1,7 @@
 const axios = require('axios');
 
-const { get: axiosGet, post: axiosPost } = axios;
+const { get: axiosGet, post: axiosPost, delete: axiosDelete } = axios;
+
 
 /* eslint no-console: off */
 // Get the auth token @params user, password
@@ -44,4 +45,18 @@ exports.addTask = authType => (req, res) => {
     data: taskData
   }).then(apiRes => res.send(apiRes.data))
     .catch(err => console.log('error: ', err.response.data));
+};
+
+// Delete a single task middleware
+exports.deleteSingleTask = authType => (req, res) => {
+  const { cookies: { authorization } } = req;
+  const { query: { id } } = req;
+  const headers = {
+    Authorization: `${authType} ${authorization.token}`,
+    'Content-type': 'text/plain'
+  };
+
+  axiosDelete(`https://api.storn.co/api/v1/task/${id}/`, { headers })
+    .then(({ status }) => res.send(`Task Deleted! ${status}`))
+    .catch(err => console.log('ERROR: ', err.response.data));
 };

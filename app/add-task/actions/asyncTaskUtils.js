@@ -1,4 +1,7 @@
 import axios from 'axios';
 
-export const getAllTasks = () => axios('/tasks');
+const { post: axiosPost, get: axiosGet } = axios;
+
+export const getAllTasks = () => axiosGet('/tasks');
 export const postNewTask = task => axios.post('/new-task', task);
+export const deleteSingleTask = taskId => axios.delete(`/delete-task?id=${taskId}`);

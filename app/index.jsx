@@ -35,8 +35,14 @@ const handleClick = props => (e) => {
 
   // Add new or save changes to a task
   if (e.target.parentNode.id === 'save-task' || e.target.id === 'save-task') {
-    // props.saveTaskAction(props.addTask.inputs, props.addTask.newTask);
-    props.postTaskAction(props.addTask.newTask);
+    // props.postTaskAction(props.addTask.newTask);
+  }
+
+  console.log('Clicked el: ', e.target.parentNode.id);
+  // Add new or save changes to a task
+  if (e.target.parentNode.id.includes('delete')) {
+    console.log('Delete clicked!!!');
+    props.deleteSingleTaskAction('104');
   }
 };
 

@@ -29,9 +29,11 @@ export const handleGetTaskResponse = (taskList) => {
 const findTask = (tasks, taskId) =>
   tasks.find(({ id }) => taskId === id);
 
+// Updating a task
 const updateTask = (task, propObj) =>
   ({ ...task, ...propObj });
 
+// Updata a task
 const getTaskIndex = (tasks, taskId) =>
   tasks.findIndex(({ id }) => id === taskId);
 
@@ -81,3 +83,7 @@ export const saveNewTask = (inputs, newTaskObj) => {
 
   return newTask;
 };
+
+// export const deleteSingleTask = (task) => {
+//   
+// };

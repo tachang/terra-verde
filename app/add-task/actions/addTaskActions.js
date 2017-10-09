@@ -1,5 +1,5 @@
 /* eslint no-console: off */
-import { getAllTasks, postNewTask } from './asyncTaskUtils';
+import { getAllTasks, postNewTask, deleteSingleTask } from './asyncTaskUtils';
 import {
   handleGetTaskResponse, findUpdateTask, selectTaskChk,
   updateTaskInputs, saveNewTask, handleAddEditTaskResponse
@@ -60,4 +60,11 @@ export const postTaskAction = task =>
       })
       .then(() => dispatch(getTasksAction()))
       .catch(err => console.log(err.response));
+  };
+
+// Delete a single task action creator
+export const deleteSingleTaskAction = taskId =>
+  (dispatch, getState) => {
+    deleteSingleTask(taskId)
+      .then(delRes => console.log('Delete response: ', delRes));
   };
