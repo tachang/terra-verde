@@ -1,6 +1,7 @@
 const { resolve } = require('path');
 const { NamedModulesPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const srcPath = resolve(__dirname, './app/entry.jsx');
 const publicPath = resolve(__dirname, 'dist/');
@@ -20,7 +21,10 @@ module.exports = {
       { test: /\.jsx?$/, use: 'babel-loader', exclude: /node_modules/ },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'resolve-url-loader', 'sass-loader?sourceMap']
+        })
       },
       { test: /\.(png|svg|jpg|gif)$/, use: 'file-loader' },
       { test: /\.(woff|woff2|eot|ttf|otf)$/, use: 'file-loader' }
@@ -28,6 +32,7 @@ module.exports = {
   },
   plugins: [
     new NamedModulesPlugin(),
+    new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
       template: './template.html'
     })
