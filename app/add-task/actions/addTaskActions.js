@@ -2,7 +2,7 @@
 import { getAllTasks, postNewTask, deleteSingleTask } from './asyncTaskUtils';
 import {
   handleGetTaskResponse, findUpdateTask, selectTaskChk, updateTaskInputs, saveNewTask,
-  handleAddEditTaskResponse, parseTaskId
+  handleAddEditTaskResponse, parseTaskId, selectTasks
 } from './addTaskUtils';
 
 // Handles updates to the input data
@@ -22,13 +22,20 @@ export const updateTaskAction = (taskId, propObj) =>
     dispatch({ type: 'UPDATE_TASK', payload: updatedTasks });
   };
 
+const toggleTaskCheck = (uiTasks, taskId) =>
+  ({ type: 'TOGGLE_SELECT_TASK', payload: selectTaskChk(uiTasks, taskId) });
+
+const selectTaskListAdd = (selectedTasksList, pureTasks, taskId) =>
+  ({ type: 'SELECT_TASK_TO_EDIT', payload: selectTasks(selectedTasksList, pureTasks, taskId) });
+
 // The action creator for selecting a task
 export const selectTaskAction = taskId =>
   (dispatch, getState) => {
-    const { addTask: { taskList } } = getState();
-    const { uiTasks = [] } = taskList;
+    const { addTask: { taskList, selectedTasksList } } = getState();
+    const { uiTasks, pureTasks } = taskList;
 
-    dispatch({ type: 'TOGGLE_SELECT_TASK', payload: selectTaskChk(uiTasks, taskId) });
+    dispatch(toggleTaskCheck(uiTasks, taskId));
+    dispatch(selectTaskListAdd(selectedTasksList, pureTasks, taskId));
   };
 
 // Get all tasks async action creator
@@ -64,7 +71,9 @@ export const postTaskAction = task =>
 
 // Delete a single task action creator
 export const deleteSingleTaskAction = taskId =>
-  (dispatch, getState) => {
+  (dispatch) => {
     deleteSingleTask(parseTaskId(taskId))
-      .then(delRes => console.log('Delete response: ', delRes));
+      .then(delRes => console.log('Delete response: ', delRes))
+      .then(() => dispatch(getTasksAction()))
+      .catch(err => console.log(err.response));
   };

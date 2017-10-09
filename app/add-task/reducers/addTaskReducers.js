@@ -11,8 +11,12 @@ const initialState = {
     priority: 1,
     description: ''
   },
-  taskList: [],
-  newTask: { ...newTaskObject }
+  taskList: {
+    pureTasks: [],
+    uiTasks: []
+  },
+  newTask: { ...newTaskObject },
+  selectedTasksList: []
 };
 
 export const addTodoReducer = (state = initialState, action) => {
@@ -48,6 +52,10 @@ export const addTodoReducer = (state = initialState, action) => {
       const { taskList: { pureTasks } } = newState;
 
       return { ...state, taskList: { uiTasks: action.payload, pureTasks } };
+    }
+
+    case 'SELECT_TASK_TO_EDIT': {
+      return { ...state, selectedTasksList: action.payload };
     }
 
     case 'SAVE_NEW_TASK': {

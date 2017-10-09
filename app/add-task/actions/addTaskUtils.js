@@ -51,10 +51,21 @@ export const findUpdateTask = (tasks, taskId, propObj) => {
 
 // Handles check box selection of a task
 export const selectTaskChk = (tasks, taskId) => {
-  const { selected } = findTask(tasks, taskId);
+  const task = findTask(tasks, taskId);
+  const { selected } = task;
   const toggleCheck = { selected: !selected };
 
   return findUpdateTask(tasks, taskId, toggleCheck);
+};
+
+// Select task(s) for operation
+export const selectTasks = (selectedTasks, taskList, taskId) => {
+  const newSelectedTasks = [...selectedTasks];
+  const selectedTask = { ...findTask(taskList, taskId) };
+
+  newSelectedTasks.push(selectedTask);
+
+  return newSelectedTasks;
 };
 
 // Handles creation of the new task object
