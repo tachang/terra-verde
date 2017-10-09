@@ -1,6 +1,6 @@
 # App Folder
 
-## Directories
+## Module Directories
 
 #### `/add-task:`
 #### `/task-list:`

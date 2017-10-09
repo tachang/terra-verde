@@ -11,6 +11,7 @@ PASSWORD=[password]
 NODE_ENV=development
 AUTH_TYPE=Token
 ```
+
 ## Running the project
 1. Install dependencies `npm i` (from root of project)
 2. Start server `$ npm run serve`
@@ -18,7 +19,10 @@ AUTH_TYPE=Token
 4. Set auth: set browser url to `localhost:5000/auth`
 5. Run task list: set browser url to `localhost:5000/`
 
-### What's missing (global):
+Ideally, each component directory should house all dependencies specific to that folder.
+I didn't have time for the migration, so the `/add-task` holds all the ui functionality.
+
+#### What's missing (global) -
 - Environment configurations
 - Production optimizations
 - Full Hot Module Replacement configuration
@@ -26,7 +30,7 @@ AUTH_TYPE=Token
 - Unit testing
 - A bunch of other Webpack optimizations
 
-### What's missing (Task List functionality):
+#### What's missing (Task List functionality) -
 - Change priority
 - Toggle complete incomplete
 - Sort tasks ex: click on `status`, `id`, `priority` to sort
@@ -40,4 +44,3 @@ AUTH_TYPE=Token
 - Flow - incremental typing or for at least models and model update functions
 - ImmutableJS - ensures the state container cannot be mutated
 
-*NOTES: See `README` for each component folder*
