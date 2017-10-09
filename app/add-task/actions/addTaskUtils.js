@@ -1,6 +1,22 @@
+/* Utilities local to this file only */
+
 // Creates a new task with UI properties
 const createUITask = task => ({ ...task, selected: false });
 
+// Finds a task from the collection
+const findTask = (tasks, taskId) =>
+  tasks.find(({ id }) => taskId === id);
+
+// NOTE: Unused local functions
+// Updating a task 
+// const updateTask = (task, propObj) =>
+//   ({ ...task, ...propObj });
+
+// Updata a task
+// const getTaskIndex = (tasks, taskId) =>
+//   tasks.findIndex(({ id }) => id === taskId);
+
+/* Exported utities */
 export const parseTaskId = taskData => taskData.split('-')[1];
 
 // Creates a new list of UI tasks
@@ -26,18 +42,6 @@ export const handleGetTaskResponse = (taskList) => {
 
   return { taskList, uiTasks };
 };
-
-// Finds a task from the collection
-const findTask = (tasks, taskId) =>
-  tasks.find(({ id }) => taskId === id);
-
-// Updating a task
-const updateTask = (task, propObj) =>
-  ({ ...task, ...propObj });
-
-// Updata a task
-const getTaskIndex = (tasks, taskId) =>
-  tasks.findIndex(({ id }) => id === taskId);
 
 // Finds a task and updates specified properties on it
 export const findUpdateTask = (tasks, taskId, propObj) => {
@@ -85,7 +89,7 @@ export const updateTaskInputs = (inputs, inputObj) => {
 };
 
 // Handles creation of the new task object
-export const saveNewTask = (inputs, newTaskObj) => {
+export const saveNewTask = (inputs) => {
   const inputsArr = Object.keys(inputs);
 
   const newTask = inputsArr.reduce((acc, curr) => {
@@ -96,7 +100,3 @@ export const saveNewTask = (inputs, newTaskObj) => {
 
   return newTask;
 };
-
-// export const deleteSingleTask = (task) => {
-//   
-// };
