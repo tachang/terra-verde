@@ -1,8 +1,8 @@
 /* eslint no-console: off */
 import { getAllTasks, postNewTask, deleteSingleTask } from './asyncTaskUtils';
 import {
-  handleGetTaskResponse, findUpdateTask, selectTaskChk,
-  updateTaskInputs, saveNewTask, handleAddEditTaskResponse
+  handleGetTaskResponse, findUpdateTask, selectTaskChk, updateTaskInputs, saveNewTask,
+  handleAddEditTaskResponse, parseTaskId
 } from './addTaskUtils';
 
 // Handles updates to the input data
@@ -65,6 +65,6 @@ export const postTaskAction = task =>
 // Delete a single task action creator
 export const deleteSingleTaskAction = taskId =>
   (dispatch, getState) => {
-    deleteSingleTask(taskId)
+    deleteSingleTask(parseTaskId(taskId))
       .then(delRes => console.log('Delete response: ', delRes));
   };

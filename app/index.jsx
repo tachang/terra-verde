@@ -38,11 +38,11 @@ const handleClick = props => (e) => {
     // props.postTaskAction(props.addTask.newTask);
   }
 
-  console.log('Clicked el: ', e.target.parentNode.id);
+  // console.log('Clicked el: ', e.target.parentNode.id);
   // Add new or save changes to a task
   if (e.target.parentNode.id.includes('delete')) {
     console.log('Delete clicked!!!');
-    props.deleteSingleTaskAction('104');
+    props.deleteSingleTaskAction(e.target.parentNode.id);
   }
 };
 

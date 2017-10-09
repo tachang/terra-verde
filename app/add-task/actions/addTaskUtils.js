@@ -1,6 +1,8 @@
 // Creates a new task with UI properties
 const createUITask = task => ({ ...task, selected: false });
 
+export const parseTaskId = taskData => taskData.split('-')[1];
+
 // Creates a new list of UI tasks
 export const createUITaskList = tasks =>
   tasks.map(createUITask);
