@@ -3,10 +3,6 @@
 // Creates a new task with UI properties
 const createUITask = task => ({ ...task, selected: false });
 
-// Finds a task from the collection
-const findTask = (tasks, taskId) =>
-  tasks.find(({ id }) => taskId === id);
-
 // NOTE: Unused local functions
 // Updating a task 
 // const updateTask = (task, propObj) =>
