@@ -22,9 +22,11 @@ export const updateTaskAction = (taskId, propObj) =>
     dispatch({ type: 'UPDATE_TASK', payload: updatedTasks });
   };
 
+// Action creator for the checkbox toggle
 const toggleTaskCheck = (uiTasks, taskId) =>
   ({ type: 'TOGGLE_SELECT_TASK', payload: selectTaskChk(uiTasks, taskId) });
 
+// Action creator for adding selected tasks to the list
 const selectTaskListAdd = (selectedTasksList, pureTasks, taskId) =>
   ({ type: 'SELECT_TASK_TO_EDIT', payload: selectTasks(selectedTasksList, pureTasks, taskId) });
 

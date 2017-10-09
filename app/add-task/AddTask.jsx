@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
+import Chip from 'material-ui/Chip';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
 import { Save, Delete } from 'material-ui-icons';
 
@@ -15,6 +16,7 @@ const AddTask = (props) => {
   return (
     <TableRow>
       <TableRowColumn><div>Add Task:</div></TableRowColumn>
+      <TableRowColumn><Chip>incomplete</Chip></TableRowColumn>
       <TableRowColumn>
         <TextField
           type="number"
