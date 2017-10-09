@@ -29,6 +29,7 @@ I didn't have time for the migration, so the `/add-task` holds all the ui functi
 - Server-side rendering
 - Unit testing
 - A bunch of other Webpack optimizations
+- Dockerize and compose 
 
 #### What's missing (Task List functionality) -
 - Change priority
